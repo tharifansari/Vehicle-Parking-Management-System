@@ -7,7 +7,7 @@ from PIL import Image, ImageTk
 
 
 def dat(date):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     dbms = db.cursor()
     try:
         dbms.execute("select sum(amount) from tot_trans_day where date=%s group by date", date)
@@ -23,7 +23,7 @@ def dat(date):
 
 
 def removeempp(empid):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     dbms = db.cursor()
     try:
         dbms.execute("delete from employee where emp_id=%s", (empid))
@@ -38,7 +38,7 @@ def removeempp(empid):
 
 
 def count_proc(date):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     dbms = db.cursor()
     try:
         dbms.execute("CALL COST2(%s, @val)", (date))
@@ -57,7 +57,7 @@ def count_proc(date):
 
 
 def check_veh(veh_num):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     allow = db.cursor()
     try:
         allow.execute("select veh_num from vehicle_owner")
@@ -81,7 +81,7 @@ def check_veh(veh_num):
 
 
 def check_admin(name, passcode):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     allrows = db.cursor()
     try:
         allrows.execute("select name from admin")
@@ -107,7 +107,7 @@ def check_admin(name, passcode):
 
 
 def check_staff(id, passcode):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     allrows = db.cursor()
     try:
         allrows.execute("select emp_id from employee")
@@ -135,7 +135,7 @@ def check_staff(id, passcode):
 
 
 def addstaff(a, b, c, d, e):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     hey = db.cursor()
     try:
         hey.execute("insert into employee values(%s, %s, %s, %s ,%s)", (a, b, c, d, e))
@@ -150,7 +150,7 @@ def addstaff(a, b, c, d, e):
 
 
 def cost_calculation(veh_num):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     hey = db.cursor()
     try:
         hey.execute("select out_time,in_time from parking where veh_num=%s", (veh_num))
@@ -174,7 +174,7 @@ def cost_calculation(veh_num):
 
 
 def entry(a, b, c, d, e, f, g, h, i, j):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     hey = db.cursor()
     try:
         hey.execute("insert into VEHICLE_OWNER values(%s, %s, %s, %s ,%s)", (c, b, e, f, d))
@@ -192,7 +192,7 @@ def entry(a, b, c, d, e, f, g, h, i, j):
 
 
 def exitt(vehnum, time):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     hey = db.cursor()
     try:
         res = check_veh(vehnum)
@@ -221,7 +221,7 @@ def exitt(vehnum, time):
 
 
 def tran(vehnum, cost):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     dbms = db.cursor()
     try:
         dbms.execute("select ticket_num, in_date, emp_id from parking where veh_num =%s", (vehnum))
@@ -238,7 +238,7 @@ def tran(vehnum, cost):
 
 
 def t_lost(vehnum):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     dbms = db.cursor()
     try:
         dbms.execute("select emp_id from parking where veh_num =%s", (vehnum))
@@ -253,7 +253,7 @@ def t_lost(vehnum):
 
 
 def v_cleaning(vehnum):
-    db = pymysql.connect("localhost", "root", "THARIans@99", "DBMS_project")
+    db = pymysql.connect("localhost", "root", "your_password", "database_name")
     dbms = db.cursor()
     try:
         dbms.execute("select ticket_num, emp_id from parking where veh_num =%s", (vehnum))
